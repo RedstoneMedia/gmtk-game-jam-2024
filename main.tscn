@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfr4g816ylfg3"]
+[gd_scene load_steps=14 format=3 uid="uid://cfr4g816ylfg3"]
 
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_g5inn"]
 [ext_resource type="PackedScene" uid="uid://dqx641hjwmm6e" path="res://player/player.tscn" id="1_h63uo"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_rwdg1"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_o5x27"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_2rcjf"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_d2jov"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_fmfi1"]
 [ext_resource type="Script" path="res://laser.gd" id="6_qb2kb"]
 [ext_resource type="PackedScene" uid="uid://b1chfskhe71u7" path="res://object.tscn" id="7_31gig"]
 
@@ -22,16 +21,7 @@ ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7skuu"]
-size = Vector3(27, 1, 25)
-
-[sub_resource type="Resource" id="Resource_ib1r3"]
-script = ExtResource("4_2rcjf")
-duration = 1.0
-transition = 0
-ease = 2
-
-[sub_resource type="Resource" id="Resource_bwifg"]
+[sub_resource type="Resource" id="Resource_6rmfq"]
 script = ExtResource("5_d2jov")
 cull_mask = 1048575
 h_offset = 0.0
@@ -40,12 +30,22 @@ projection = 0
 fov = 75.0
 size = 1.0
 frustum_offset = Vector2(0, 0)
-near = 0.001
+near = 0.05
 far = 4000.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vmvv"]
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.603922)
+
+[sub_resource type="Curve3D" id="Curve3D_8w4yc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -22.2653, 0, -0.0695219, 0, 0, 0, 0, 0, 0, 3.68958, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7skuu"]
+size = Vector3(27, 1, 25)
 
 [node name="Main" type="Node3D"]
 
@@ -57,31 +57,26 @@ transform = Transform3D(1, 0, 0, 0, 0.629605, 0.776915, 0, -0.776915, 0.629605, 
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.748304, -0.348377, 0.564512, 0, 0.850995, 0.525173, -0.663356, -0.392989, 0.636803, 11.766, 13.8604, 13.2727)
-near = 0.001
+transform = Transform3D(-0.999984, -0.00107586, 0.0033613, 0.000150955, 0.938487, 0.345292, -0.00352604, 0.345291, -0.938481, 0.0303679, 7.08575, -11.3375)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-script = ExtResource("1_rwdg1")
+script = ExtResource("1_g5inn")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_7skuu")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-size = Vector3(28, 1, 25)
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+transform = Transform3D(-0.999984, -0.00107586, 0.0033613, 0.000150955, 0.938487, 0.345292, -0.00352604, 0.345291, -0.938481, 0.0303679, 7.08575, -11.3375)
+script = ExtResource("5_fmfi1")
+follow_mode = 4
+follow_target = NodePath("../Player/Smoothing")
+follow_path = NodePath("../Path3D")
+look_at_mode = 2
+look_at_target = NodePath("../Player/Smoothing")
+camera_3d_resource = SubResource("Resource_6rmfq")
+look_at_damping = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("laser", "target_node") instance=ExtResource("1_h63uo")]
 transform = Transform3D(0.201, -2.56431e-05, 1.75938e-05, 2.56431e-05, 0.201, -2.83739e-05, -1.75938e-05, 2.83739e-05, 0.201, 0, 2.9144, 0)
 laser = NodePath("../Laser")
 target_node = NodePath("../Target")
-
-[node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(0.748304, -0.348377, 0.564512, 0, 0.850995, 0.525173, -0.663356, -0.392989, 0.636803, 11.766, 13.8604, 13.2727)
-script = ExtResource("3_o5x27")
-tween_resource = SubResource("Resource_ib1r3")
-camera_3d_resource = SubResource("Resource_bwifg")
 
 [node name="Target" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26081, 1.65746, 0)
@@ -97,6 +92,19 @@ height = 1.0
 cone = true
 material = SubResource("StandardMaterial3D_5vmvv")
 
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76353, 7.08575, -11.3042)
+curve = SubResource("Curve3D_8w4yc")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_7skuu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+size = Vector3(28, 1, 25)
+
 [node name="Object" parent="." instance=ExtResource("7_31gig")]
 transform = Transform3D(1, 0, 0, 0, 2.8, 0, 0, 0, 1, 7, 2, 9)
 axis_scale_by = Vector3(0, 1, 0)
@@ -108,3 +116,5 @@ axis_scale_by = Vector3(0, 1, 0)
 [node name="Object3" parent="." instance=ExtResource("7_31gig")]
 transform = Transform3D(1, 0, 0, 0, -1.95827e-07, -1, 0, 4.48, -4.37114e-08, 7, 4, 7.51631)
 axis_scale_by = Vector3(0, 1, 0)
+
+[editable path="Player"]

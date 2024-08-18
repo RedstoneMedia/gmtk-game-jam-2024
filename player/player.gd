@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var laser: Node3D
-@onready var eyes = $Eyes
+@onready var eyes = $Smoothing/Eyes
 @export var target_node : Node3D
 
 

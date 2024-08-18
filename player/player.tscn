@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://dqx641hjwmm6e"]
+[gd_scene load_steps=14 format=4 uid="uid://dqx641hjwmm6e"]
 
 [ext_resource type="Material" uid="uid://c07qq3uewatox" path="res://materials/metal.material" id="1_dila4"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_mxm63"]
+[ext_resource type="Script" path="res://addons/smoothing/smoothing.gd" id="2_yh4ak"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg3sl"]
+points = PackedVector3Array(6.20704, -10.7244, -4.54357, 1.08113, 4.89701, -16.8229, -0.920004, -10.8883, -3.59978, -1.63202, 3.26823, -16.8229, 6.50827, -9.75458, 4.8823, 1.62427, 7.61164, 2.16916, -0.920004, -10.8883, 3.59978, -1.63202, 3.26823, 16.8229, 1.08113, 4.35408, 17.3669, -1.09833, 6.27728, -1.8644, 6.50827, -9.75458, -4.8823, -1.62827, -4.96874, -2.84389, 0.538839, 2.72716, -17.3669, 0.538839, 2.72716, 17.3669, 1.62427, 7.61164, -2.16916, 6.20651, -10.7233, 4.54297, -1.63202, 4.35408, -16.8229, -1.63202, 4.35408, 16.8229, 1.08113, 4.89701, 16.8229, -1.62822, -4.9687, 2.84386, -0.546589, 2.72716, 17.3669, -0.546589, 2.72716, -17.3669, 1.08113, 3.26823, -17.3669, -1.09746, 6.2751, 1.8639, 1.08113, 3.26823, 17.3669, 1.08113, 4.35408, -17.3669, -1.62822, 4.51709, 2.84386, -1.08973, 3.26823, 17.3669, -1.08973, 3.26823, -17.3669, -1.62827, 4.51717, -2.84389)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwoyx"]
 albedo_color = Color(0, 0, 0, 1)
@@ -163,28 +167,28 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5j0u3")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg3sl"]
-points = PackedVector3Array(6.20704, -10.7244, -4.54357, 1.08113, 4.89701, -16.8229, -0.920004, -10.8883, -3.59978, -1.63202, 3.26823, -16.8229, 6.50827, -9.75458, 4.8823, 1.62427, 7.61164, 2.16916, -0.920004, -10.8883, 3.59978, -1.63202, 3.26823, 16.8229, 1.08113, 4.35408, 17.3669, -1.09833, 6.27728, -1.8644, 6.50827, -9.75458, -4.8823, -1.62827, -4.96874, -2.84389, 0.538839, 2.72716, -17.3669, 0.538839, 2.72716, 17.3669, 1.62427, 7.61164, -2.16916, 6.20651, -10.7233, 4.54297, -1.63202, 4.35408, -16.8229, -1.63202, 4.35408, 16.8229, 1.08113, 4.89701, 16.8229, -1.62822, -4.9687, 2.84386, -0.546589, 2.72716, 17.3669, -0.546589, 2.72716, -17.3669, 1.08113, 3.26823, -17.3669, -1.09746, 6.2751, 1.8639, 1.08113, 3.26823, 17.3669, 1.08113, 4.35408, -17.3669, -1.62822, 4.51709, 2.84386, -1.08973, 3.26823, 17.3669, -1.08973, 3.26823, -17.3669, -1.62827, 4.51717, -2.84389)
-
 [node name="Robot" type="CharacterBody3D"]
 transform = Transform3D(0.201, 0, 0, 0, 0.201, 0, 0, 0, 0.201, 0, 0, 0)
 script = ExtResource("1_mxm63")
 
-[node name="Eyes" type="MeshInstance3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0794662, 0, 0.568836)
+shape = SubResource("ConvexPolygonShape3D_rg3sl")
+
+[node name="Smoothing" type="Node3D" parent="."]
+script = ExtResource("2_yh4ak")
+
+[node name="Eyes" type="MeshInstance3D" parent="Smoothing"]
 transform = Transform3D(-2.70272e-08, 0, 0.618311, 0, 0.618311, 0, -0.618311, 0, -2.70272e-08, 1.06102, 6.63201, -0.807744)
 mesh = SubResource("ArrayMesh_5agub")
 skeleton = NodePath("")
 
-[node name="Main" type="MeshInstance3D" parent="."]
+[node name="Main" type="MeshInstance3D" parent="Smoothing"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0794662, 0, 0.568836)
 mesh = SubResource("ArrayMesh_uvhoa")
 skeleton = NodePath("")
 
-[node name="Top Hat" type="MeshInstance3D" parent="."]
+[node name="Top Hat" type="MeshInstance3D" parent="Smoothing"]
 transform = Transform3D(-1.67464e-08, 0, 0.383114, 0, 0.383114, 0, -0.383114, 0, -1.67464e-08, 0.0766517, 7.49583, 0.648812)
 mesh = SubResource("ArrayMesh_42mba")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0794662, 0, 0.568836)
-shape = SubResource("ConvexPolygonShape3D_rg3sl")
