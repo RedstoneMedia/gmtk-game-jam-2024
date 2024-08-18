@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddrnnqdifyfet"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc73c"]
+size = Vector3(8.50195, 0.182129, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tb6jt"]
+height = 2.58228
+radius = 0.201042
+
+[node name="Seesaw" type="Node3D"]
+
+[node name="Plank" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.629983, 0.743994, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Plank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0656071, 0)
+size = Vector3(8.50952, 0.175781, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146484, -0.000732422, 0)
+shape = SubResource("BoxShape3D_wc73c")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456364, 0)
+node_a = NodePath("../Plank")
+angular_limit/lower = -2.28813
+
+[node name="Base" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454084, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+radius = 0.2
+height = 2.565
+sides = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_tb6jt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.748737, 0)
+size = Vector3(0.369385, 1.48853, 1)

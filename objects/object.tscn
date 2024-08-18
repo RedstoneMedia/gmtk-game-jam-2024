@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1chfskhe71u7"]
 
 [ext_resource type="Material" uid="uid://c07qq3uewatox" path="res://materials/metal.material" id="1_nue1b"]
-[ext_resource type="Script" path="res://object.gd" id="1_yojrf"]
+[ext_resource type="Script" path="res://objects/object.gd" id="1_yojrf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ek0n"]
 

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu7p456gruc7s"]
+
+[ext_resource type="PackedScene" uid="uid://b1chfskhe71u7" path="res://objects/object.tscn" id="4_b2xt8"]
+[ext_resource type="PackedScene" uid="uid://ddrnnqdifyfet" path="res://objects/seesaw.tscn" id="5_psb3k"]
+
+[sub_resource type="Curve3D" id="Curve3D_8w4yc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.112297, 16.9959, -0.0695219, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7skuu"]
+size = Vector3(27, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0076"]
+size = Vector3(3.98926, 1, 5.06244)
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="CameraPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34606, 10.1223, -11.3042)
+curve = SubResource("Curve3D_8w4yc")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_7skuu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+size = Vector3(28, 1, 25)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26168, 8.75534, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000427246, 0, -9.15527e-05)
+size = Vector3(3.98059, 1, 5.03314)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_g0076")
+
+[node name="Object" parent="." instance=ExtResource("4_b2xt8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72775, 10.8036, 0.0473936)
+mass = 1.5
+
+[node name="Object2" parent="." instance=ExtResource("4_b2xt8")]
+transform = Transform3D(4.08855, 0, 0, 0, 1, 0, 0, 0, 2.635, 5.59093, 9.77137, 0.0473936)
+mass = 10.0
+axis_scale_by = Vector3(1, 0, 0)
+
+[node name="Seesaw" parent="." instance=ExtResource("5_psb3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33938, 0)
