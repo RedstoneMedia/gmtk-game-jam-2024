@@ -1,11 +1,32 @@
-[gd_scene load_steps=14 format=4 uid="uid://dqx641hjwmm6e"]
+[gd_scene load_steps=18 format=4 uid="uid://dqx641hjwmm6e"]
 
 [ext_resource type="Material" uid="uid://c07qq3uewatox" path="res://materials/metal.material" id="1_dila4"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_mxm63"]
-[ext_resource type="Script" path="res://addons/smoothing/smoothing.gd" id="2_yh4ak"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_dup8b"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_p1lj3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_j1c55"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg3sl"]
-points = PackedVector3Array(6.20704, -10.7244, -4.54357, 1.08113, 4.89701, -16.8229, -0.920004, -10.8883, -3.59978, -1.63202, 3.26823, -16.8229, 6.50827, -9.75458, 4.8823, 1.62427, 7.61164, 2.16916, -0.920004, -10.8883, 3.59978, -1.63202, 3.26823, 16.8229, 1.08113, 4.35408, 17.3669, -1.09833, 6.27728, -1.8644, 6.50827, -9.75458, -4.8823, -1.62827, -4.96874, -2.84389, 0.538839, 2.72716, -17.3669, 0.538839, 2.72716, 17.3669, 1.62427, 7.61164, -2.16916, 6.20651, -10.7233, 4.54297, -1.63202, 4.35408, -16.8229, -1.63202, 4.35408, 16.8229, 1.08113, 4.89701, 16.8229, -1.62822, -4.9687, 2.84386, -0.546589, 2.72716, 17.3669, -0.546589, 2.72716, -17.3669, 1.08113, 3.26823, -17.3669, -1.09746, 6.2751, 1.8639, 1.08113, 3.26823, 17.3669, 1.08113, 4.35408, -17.3669, -1.62822, 4.51709, 2.84386, -1.08973, 3.26823, 17.3669, -1.08973, 3.26823, -17.3669, -1.62827, 4.51717, -2.84389)
+[sub_resource type="Resource" id="Resource_5y8sa"]
+script = ExtResource("3_p1lj3")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_38tax"]
+script = ExtResource("4_j1c55")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_psmgj"]
+radius = 4.56613
+height = 18.9982
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwoyx"]
 albedo_color = Color(0, 0, 0, 1)
@@ -168,27 +189,33 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5j0u3")
 
 [node name="Robot" type="CharacterBody3D"]
-transform = Transform3D(0.201, 0, 0, 0, 0.201, 0, 0, 0, 0.201, 0, 0, 0)
+transform = Transform3D(0.034, 0, 0, 0, 0.034, 0, 0, 0, 0.034, 0, 0, 0)
 script = ExtResource("1_mxm63")
 
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.92847, -1.73678)
+script = ExtResource("2_dup8b")
+tween_resource = SubResource("Resource_5y8sa")
+camera_3d_resource = SubResource("Resource_38tax")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0794662, 0, 0.568836)
-shape = SubResource("ConvexPolygonShape3D_rg3sl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60492, 0)
+shape = SubResource("CapsuleShape3D_psmgj")
 
-[node name="Smoothing" type="Node3D" parent="."]
-script = ExtResource("2_yh4ak")
-
-[node name="Eyes" type="MeshInstance3D" parent="Smoothing"]
+[node name="Eyes" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.70272e-08, 0, 0.618311, 0, 0.618311, 0, -0.618311, 0, -2.70272e-08, 1.06102, 6.63201, -0.807744)
+visible = false
 mesh = SubResource("ArrayMesh_5agub")
 skeleton = NodePath("")
 
-[node name="Main" type="MeshInstance3D" parent="Smoothing"]
+[node name="Main" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0794662, 0, 0.568836)
+visible = false
 mesh = SubResource("ArrayMesh_uvhoa")
 skeleton = NodePath("")
 
-[node name="Top Hat" type="MeshInstance3D" parent="Smoothing"]
+[node name="Top Hat" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.67464e-08, 0, 0.383114, 0, 0.383114, 0, -0.383114, 0, -1.67464e-08, 0.0766517, 7.49583, 0.648812)
+visible = false
 mesh = SubResource("ArrayMesh_42mba")
 skeleton = NodePath("")

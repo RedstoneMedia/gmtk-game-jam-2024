@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d2n2t506lm8un"
+path="res://.godot/imported/pipe-ring-colored.obj-2b184b4a06eb3c4bbda96be8a3a9e1c3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pipe-ring-colored.obj-2b184b4a06eb3c4bbda96be8a3a9e1c3.mesh"]
+
+source_file="res://kenny/pipe-ring-colored.obj"
+dest_files=["res://.godot/imported/pipe-ring-colored.obj-2b184b4a06eb3c4bbda96be8a3a9e1c3.mesh", "res://.godot/imported/pipe-ring-colored.obj-2b184b4a06eb3c4bbda96be8a3a9e1c3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

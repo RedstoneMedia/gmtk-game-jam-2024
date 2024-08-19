@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://boeo5taeb1d5y"
+path="res://.godot/imported/computer-screen.obj-c852383c17ae1e5a992a7b68a9138663.mesh"
+
+[deps]
+
+files=["res://.godot/imported/computer-screen.obj-c852383c17ae1e5a992a7b68a9138663.mesh"]
+
+source_file="res://kenny/computer-screen.obj"
+dest_files=["res://.godot/imported/computer-screen.obj-c852383c17ae1e5a992a7b68a9138663.mesh", "res://.godot/imported/computer-screen.obj-c852383c17ae1e5a992a7b68a9138663.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

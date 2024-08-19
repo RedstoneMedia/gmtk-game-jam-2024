@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d1p8irhi513x7"
+path="res://.godot/imported/computer-system.obj-3ae861a4cd05129af1715f46366ecfd8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/computer-system.obj-3ae861a4cd05129af1715f46366ecfd8.mesh"]
+
+source_file="res://kenny/computer-system.obj"
+dest_files=["res://.godot/imported/computer-system.obj-3ae861a4cd05129af1715f46366ecfd8.mesh", "res://.godot/imported/computer-system.obj-3ae861a4cd05129af1715f46366ecfd8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

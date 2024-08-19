@@ -1,11 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfr4g816ylfg3"]
+[gd_scene load_steps=10 format=3 uid="uid://cfr4g816ylfg3"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_g5inn"]
 [ext_resource type="PackedScene" uid="uid://dqx641hjwmm6e" path="res://player/player.tscn" id="1_h63uo"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_6bqj8"]
 [ext_resource type="PackedScene" uid="uid://cu7p456gruc7s" path="res://levels/test_level.tscn" id="4_lfmk1"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_d2jov"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_fmfi1"]
 [ext_resource type="Script" path="res://laser.gd" id="6_qb2kb"]
 [ext_resource type="Script" path="res://levels/level_manager.gd" id="7_tdspy"]
 
@@ -26,24 +23,6 @@ sdfgi_enabled = true
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.603922)
 
-[sub_resource type="Resource" id="Resource_2crqm"]
-script = ExtResource("3_6bqj8")
-duration = 1.0
-transition = 0
-ease = 2
-
-[sub_resource type="Resource" id="Resource_jal8m"]
-script = ExtResource("5_d2jov")
-cull_mask = 1048575
-h_offset = 0.0
-v_offset = 0.0
-projection = 0
-fov = 75.0
-size = 1.0
-frustum_offset = Vector2(0, 0)
-near = 0.05
-far = 4000.0
-
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -54,18 +33,15 @@ transform = Transform3D(0.900827, 0.337319, -0.273361, 0, 0.629605, 0.776915, 0.
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.972403, 0.136701, -0.189055, 5.16772e-05, 0.810461, 0.585776, 0.233301, 0.569593, -0.788114, 0, 0, 0)
+transform = Transform3D(0.034, -4.33722e-06, 2.97668e-06, 4.33764e-06, 0.034, -4.79919e-06, -2.97607e-06, 4.79957e-06, 0.034, 0.516741, 1.43207, -5.58412)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("1_g5inn")
 
 [node name="Player" parent="." node_paths=PackedStringArray("laser", "target_node") instance=ExtResource("1_h63uo")]
-transform = Transform3D(0.201, -2.56431e-05, 1.75938e-05, 2.56431e-05, 0.201, -2.83739e-05, -1.75938e-05, 2.83739e-05, 0.201, 0, 2.9144, -5.70475)
+transform = Transform3D(0.034, -4.33722e-06, 2.97668e-06, 4.33764e-06, 0.034, -4.79919e-06, -2.97607e-06, 4.79957e-06, 0.034, 0.516777, 1.19649, -5.52511)
 laser = NodePath("../Laser")
 target_node = NodePath("../Target")
-
-[node name="Target" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26081, 1.65746, 0)
 
 [node name="Laser" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7236, 1.65594, 1.4732)
@@ -78,15 +54,8 @@ height = 1.0
 cone = true
 material = SubResource("StandardMaterial3D_5vmvv")
 
-[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-0.972403, 0.136701, -0.189055, 5.16772e-05, 0.810461, 0.585776, 0.233301, 0.569593, -0.788114, 0, 0, 0)
-script = ExtResource("5_fmfi1")
-follow_mode = 4
-follow_target = NodePath("../Player/Smoothing")
-look_at_mode = 2
-tween_resource = SubResource("Resource_2crqm")
-camera_3d_resource = SubResource("Resource_jal8m")
-look_at_damping = true
+[node name="Target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26081, 1.65746, 0)
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("7_tdspy")

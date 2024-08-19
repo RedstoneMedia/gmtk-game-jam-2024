@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://k7cckrdua1p4"
+path="res://.godot/imported/floor-panel-corner.obj-92d3f935790810f390bfa88f4da0865e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/floor-panel-corner.obj-92d3f935790810f390bfa88f4da0865e.mesh"]
+
+source_file="res://kenny/floor-panel-corner.obj"
+dest_files=["res://.godot/imported/floor-panel-corner.obj-92d3f935790810f390bfa88f4da0865e.mesh", "res://.godot/imported/floor-panel-corner.obj-92d3f935790810f390bfa88f4da0865e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
