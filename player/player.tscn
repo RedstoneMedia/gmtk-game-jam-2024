@@ -1,27 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://dqx641hjwmm6e"]
+[gd_scene load_steps=6 format=4 uid="uid://dqx641hjwmm6e"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_mxm63"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_dup8b"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_p1lj3"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_j1c55"]
-
-[sub_resource type="Resource" id="Resource_5y8sa"]
-script = ExtResource("3_p1lj3")
-duration = 1.0
-transition = 0
-ease = 2
-
-[sub_resource type="Resource" id="Resource_38tax"]
-script = ExtResource("4_j1c55")
-cull_mask = 1048575
-h_offset = 0.0
-v_offset = 0.0
-projection = 0
-fov = 75.0
-size = 1.0
-frustum_offset = Vector2(0, 0)
-near = 0.05
-far = 4000.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_psmgj"]
 radius = 0.358
@@ -65,20 +44,18 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2i44p")
 
 [node name="Robot" type="CharacterBody3D"]
+collision_layer = 7
 script = ExtResource("1_mxm63")
 
-[node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643114, -0.00504509)
-script = ExtResource("2_dup8b")
-tween_resource = SubResource("Resource_5y8sa")
-camera_3d_resource = SubResource("Resource_38tax")
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.640009, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0527256, 0)
 shape = SubResource("CapsuleShape3D_psmgj")
 
 [node name="Eyes" type="MeshInstance3D" parent="."]
-transform = Transform3D(-9.17939e-10, 0, 0.021, 0, 0.021, 0, -0.021, 0, -9.17939e-10, 0.033148, 0.464484, -0.0415901)
+transform = Transform3D(-9.17939e-10, 0, 0.021, 0, 0.021, 0, -0.021, 0, -9.17939e-10, 0.126656, 0.373907, -0.0415901)
 visible = false
 mesh = SubResource("ArrayMesh_5agub")
 skeleton = NodePath("")

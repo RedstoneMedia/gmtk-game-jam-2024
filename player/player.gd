@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 @export var laser: Node3D
 @onready var eyes = $Eyes
-@onready var camera = $PhantomCamera3D
+@onready var camera = $Camera3D
 @export var target_node : Node3D
 
 @export_category("Player")
@@ -39,10 +39,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		look_dir = event.relative * 0.001
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("jump"): jumping = true
-	if Input.is_action_just_pressed("exit"): get_tree().quit()
 
 func _physics_process(delta: float) -> void:
-	if mouse_captured: _handle_joypad_camera_rotation(delta)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
 	if is_firing:
@@ -59,13 +57,6 @@ func release_mouse() -> void:
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	camera.rotation.y -= look_dir.x * camera_sens * sens_mod
 	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod, -1.5, 1.5)
-
-func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void:
-	var joypad_dir: Vector2 = Input.get_vector("look_left","look_right","look_up","look_down")
-	if joypad_dir.length() > 0:
-		look_dir += joypad_dir * delta
-		_rotate_camera(sens_mod)
-		look_dir = Vector2.ZERO
 
 func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
@@ -123,6 +114,7 @@ func change_object_size(object: Node3D) -> void:
 
 func fire_laser() -> void:
 	is_firing = true
+	laser.color = Color.BLUE if shrinking else Color.RED
 	laser.show()
 
 func stop_firing() -> void:
