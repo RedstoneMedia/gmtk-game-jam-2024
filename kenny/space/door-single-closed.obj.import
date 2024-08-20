@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d6t523v0wj76"
+path="res://.godot/imported/door-single-closed.obj-b5a9e80f78526a68f41157ee801d86d5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/door-single-closed.obj-b5a9e80f78526a68f41157ee801d86d5.mesh"]
+
+source_file="res://kenny/space/door-single-closed.obj"
+dest_files=["res://.godot/imported/door-single-closed.obj-b5a9e80f78526a68f41157ee801d86d5.mesh", "res://.godot/imported/door-single-closed.obj-b5a9e80f78526a68f41157ee801d86d5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

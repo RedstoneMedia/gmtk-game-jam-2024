@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxmd703twj6n2"
+path="res://.godot/imported/conveyor-long.obj-344a15a5d3066daf160aea3fa8266f62.mesh"
+
+[deps]
+
+files=["res://.godot/imported/conveyor-long.obj-344a15a5d3066daf160aea3fa8266f62.mesh"]
+
+source_file="res://kenny/conveyor/conveyor-long.obj"
+dest_files=["res://.godot/imported/conveyor-long.obj-344a15a5d3066daf160aea3fa8266f62.mesh", "res://.godot/imported/conveyor-long.obj-344a15a5d3066daf160aea3fa8266f62.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

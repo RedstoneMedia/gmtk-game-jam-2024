@@ -15,9 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_jiwv1")
 background_mode = 2
 sky = SubResource("Sky_gatvo")
 tonemap_mode = 3
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vmvv"]
 transparency = 1
@@ -33,13 +30,13 @@ transform = Transform3D(0.900827, 0.337319, -0.273361, 0, 0.629605, 0.776915, 0.
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.034, -4.33722e-06, 2.97668e-06, 4.33764e-06, 0.034, -4.79919e-06, -2.97607e-06, 4.79957e-06, 0.034, 0.516741, 1.43207, -5.58412)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.00504509, 2.66631, -6.01622e-11)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("1_g5inn")
 
 [node name="Player" parent="." node_paths=PackedStringArray("laser", "target_node") instance=ExtResource("1_h63uo")]
-transform = Transform3D(0.034, -4.33722e-06, 2.97668e-06, 4.33764e-06, 0.034, -4.79919e-06, -2.97607e-06, 4.79957e-06, 0.034, 0.516777, 1.19649, -5.52511)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 2.0232, 0)
 laser = NodePath("../Laser")
 target_node = NodePath("../Target")
 

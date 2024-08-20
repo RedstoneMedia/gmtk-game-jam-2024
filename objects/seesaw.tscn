@@ -1,42 +1,43 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddrnnqdifyfet"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc73c"]
-margin = 0.12
-size = Vector3(2.55, 0.054, 0.3)
+size = Vector3(7.65, 0.164, 0.9)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tb6jt"]
-margin = 0.012
-height = 0.774
-radius = 0.06
+height = 2.322
+radius = 0.18
 
 [node name="Seesaw" type="Node3D"]
 
 [node name="Plank" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124026, 0.39126, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.380083, 1.03181, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Plank"]
-size = Vector3(2.553, 0.054, 0.3)
+size = Vector3(7.659, 0.162, 0.9)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000989944, 0)
 shape = SubResource("BoxShape3D_wc73c")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179336, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75593, 0)
 node_a = NodePath("../Plank")
-angular_limit/lower = -2.28813
+angular_limit/enable = true
+angular_limit/upper = 0.689405
+angular_limit/lower = -2.62847
 
 [node name="Base" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0797112, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.216389, 0)
-radius = 0.06
-height = 0.771
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.673175, 0)
+radius = 0.18
+height = 2.313
 sides = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.216675, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.671084, 0)
 shape = SubResource("CylinderShape3D_tb6jt")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Base"]
-size = Vector3(0.111, 0.447, 0.3)
+size = Vector3(0.333, 1.341, 0.9)

@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export_range(1, 35, 1) var speed: float = 10 # m/s
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
 
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
+@export_range(0.1, 3.0, 0.1) var jump_height: float = 0.65 # m
 @export_range(0.1, 3.0, 0.1, "or_greater") var camera_sens: float = 1
 
 var jumping: bool = false
@@ -110,7 +110,8 @@ func update_laser(length: float = 100) -> void:
 		target = result.position
 	target_node.global_position = target
 	laser.global_position = eyes.global_position
-
+	if not "collider" in result:
+		return
 	var hit_node : Node = result.collider
 	if hit_node.is_in_group("sizeable"):
 		change_object_size(hit_node)

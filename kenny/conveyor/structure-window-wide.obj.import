@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cot83a3m4p6cy"
+path="res://.godot/imported/structure-window-wide.obj-02f80583a3bbcf65882f0d89539814db.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-window-wide.obj-02f80583a3bbcf65882f0d89539814db.mesh"]
+
+source_file="res://kenny/conveyor/structure-window-wide.obj"
+dest_files=["res://.godot/imported/structure-window-wide.obj-02f80583a3bbcf65882f0d89539814db.mesh", "res://.godot/imported/structure-window-wide.obj-02f80583a3bbcf65882f0d89539814db.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

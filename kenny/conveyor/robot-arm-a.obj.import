@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnyicmlo4inqq"
+path="res://.godot/imported/robot-arm-a.obj-b178900b8438d54d073f0d5d8c6f30f0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/robot-arm-a.obj-b178900b8438d54d073f0d5d8c6f30f0.mesh"]
+
+source_file="res://kenny/conveyor/robot-arm-a.obj"
+dest_files=["res://.godot/imported/robot-arm-a.obj-b178900b8438d54d073f0d5d8c6f30f0.mesh", "res://.godot/imported/robot-arm-a.obj-b178900b8438d54d073f0d5d8c6f30f0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

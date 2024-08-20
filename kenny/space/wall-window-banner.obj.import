@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bfei8r1q46udx"
+path="res://.godot/imported/wall-window-banner.obj-ea2d8daedefd5b9fc828028c9fb16333.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-window-banner.obj-ea2d8daedefd5b9fc828028c9fb16333.mesh"]
+
+source_file="res://kenny/space/wall-window-banner.obj"
+dest_files=["res://.godot/imported/wall-window-banner.obj-ea2d8daedefd5b9fc828028c9fb16333.mesh", "res://.godot/imported/wall-window-banner.obj-ea2d8daedefd5b9fc828028c9fb16333.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

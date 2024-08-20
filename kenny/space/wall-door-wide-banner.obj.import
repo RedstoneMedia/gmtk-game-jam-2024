@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1pt1thpp4b50"
+path="res://.godot/imported/wall-door-wide-banner.obj-111d9a0b5006b3e6968c990ab1b2fac7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-door-wide-banner.obj-111d9a0b5006b3e6968c990ab1b2fac7.mesh"]
+
+source_file="res://kenny/space/wall-door-wide-banner.obj"
+dest_files=["res://.godot/imported/wall-door-wide-banner.obj-111d9a0b5006b3e6968c990ab1b2fac7.mesh", "res://.godot/imported/wall-door-wide-banner.obj-111d9a0b5006b3e6968c990ab1b2fac7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

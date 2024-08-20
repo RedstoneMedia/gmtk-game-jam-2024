@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d38h3ur4jlu21"
+path="res://.godot/imported/floor-large.obj-7254b33906b5c19955a8e1878520bfeb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/floor-large.obj-7254b33906b5c19955a8e1878520bfeb.mesh"]
+
+source_file="res://kenny/space/floor-large.obj"
+dest_files=["res://.godot/imported/floor-large.obj-7254b33906b5c19955a8e1878520bfeb.mesh", "res://.godot/imported/floor-large.obj-7254b33906b5c19955a8e1878520bfeb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
